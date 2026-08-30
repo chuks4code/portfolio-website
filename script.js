@@ -25,7 +25,7 @@ function openModal(images, index) {
 
 
 
-function updatedGreetings(){
+function updateGreeting(){
 const hour = new Date().getHours();
 const greeting = document.getElementById("timeGreeting");
 
