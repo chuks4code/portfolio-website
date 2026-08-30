@@ -1,22 +1,155 @@
 const modal = document.getElementById("imageModal");
-
 const modalImg = document.getElementById("modalImage");
-
-const images = document.querySelectorAll( ".project-images img, .certificate-card img");
-
 const closeBtn = document.querySelector(".close-modal");
+const prevBtn = document.querySelector(".modal-prev");
+const nextBtn = document.querySelector(".modal-next");
+const imageCounter = document.getElementById("imageCounter");
 
-images.forEach(image => {
+let currentImages = [];
+let currentIndex = 0;
 
-    image.addEventListener("click", () => {
 
-        modal.style.display = "flex";
+/* ==========================
+   OPEN IMAGE MODAL
+========================== */
 
-        modalImg.src = image.src;
+function openModal(images, index) {
+
+    currentImages = images;
+    currentIndex = index;
+
+    modal.style.display = "flex";
+
+    updateModalImage();
+}
+
+
+/* ==========================
+   UPDATE MODAL IMAGE
+========================== */
+
+function updateModalImage() {
+
+    if (currentImages.length === 0) {
+        return;
+    }
+
+    modalImg.src = currentImages[currentIndex].src;
+    modalImg.alt = currentImages[currentIndex].alt;
+
+    imageCounter.textContent =
+        `${currentIndex + 1} / ${currentImages.length}`;
+
+    if (currentImages.length <= 1) {
+
+        prevBtn.style.display = "none";
+        nextBtn.style.display = "none";
+
+    } else {
+
+        prevBtn.style.display = "block";
+        nextBtn.style.display = "block";
+    }
+}
+
+
+/* ==========================
+   PROJECT IMAGES
+========================== */
+
+const projectGroups =
+    document.querySelectorAll(".project-images");
+
+projectGroups.forEach(group => {
+
+    const groupImages =
+        Array.from(group.querySelectorAll("img"));
+
+    groupImages.forEach((image, index) => {
+
+        image.addEventListener("click", () => {
+
+            openModal(groupImages, index);
+
+        });
 
     });
 
 });
+
+
+/* ==========================
+   CERTIFICATION CARDS
+========================== */
+
+const certificateCards =
+    document.querySelectorAll(".certificate-card");
+
+const certificateImages =
+    Array.from(
+        document.querySelectorAll(".certificate-card img")
+    );
+
+certificateCards.forEach((card, index) => {
+
+    card.addEventListener("click", () => {
+
+        openModal(certificateImages, index);
+
+    });
+
+});
+
+
+/* ==========================
+   NEXT IMAGE
+========================== */
+
+nextBtn.addEventListener("click", (event) => {
+
+    event.stopPropagation();
+
+    if (currentImages.length <= 1) {
+        return;
+    }
+
+    currentIndex++;
+
+    if (currentIndex >= currentImages.length) {
+        currentIndex = 0;
+    }
+
+    updateModalImage();
+
+});
+
+
+/* ==========================
+   PREVIOUS IMAGE
+========================== */
+
+prevBtn.addEventListener("click", (event) => {
+
+    event.stopPropagation();
+
+    if (currentImages.length <= 1) {
+        return;
+    }
+
+    currentIndex--;
+
+    if (currentIndex < 0) {
+        currentIndex = currentImages.length - 1;
+    }
+
+    updateModalImage();
+
+});
+
+
+/* ==========================
+   CLOSE MODAL
+========================== */
 
 closeBtn.addEventListener("click", () => {
 
@@ -24,27 +157,48 @@ closeBtn.addEventListener("click", () => {
 
 });
 
-modal.addEventListener("click", (e) => {
 
-    if(e.target === modal){
+/* ==========================
+   CLICK OUTSIDE IMAGE
+========================== */
+
+modal.addEventListener("click", (event) => {
+
+    if (event.target === modal) {
 
         modal.style.display = "none";
 
     }
 
 });
-const certificateCards = document.querySelectorAll(".certificate-card");
 
-certificateCards.forEach(card => {
 
-    card.addEventListener("click", () => {
+/* ==========================
+   KEYBOARD CONTROLS
+========================== */
 
-        const img = card.querySelector("img");
+document.addEventListener("keydown", (event) => {
 
-        modal.style.display = "flex";
+    if (modal.style.display !== "flex") {
+        return;
+    }
 
-        modalImg.src = img.src;
+    if (event.key === "Escape") {
 
-    });
+        modal.style.display = "none";
+
+    }
+
+    if (event.key === "ArrowRight") {
+
+        nextBtn.click();
+
+    }
+
+    if (event.key === "ArrowLeft") {
+
+        prevBtn.click();
+
+    }
 
 });

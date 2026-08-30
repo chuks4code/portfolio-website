@@ -109,7 +109,7 @@ nav h1 {
     gap:20px;
 
 }
-.hero-buttons button{
+.hero-buttons a{
 
     padding:15px 35px;
     border:none;
@@ -117,22 +117,23 @@ nav h1 {
     cursor:pointer;
     font-size:16px;
     font-weight:bold;
+    text-decoration: none;
 
 }
-.hero-buttons button:first-child{
+.hero-buttons a:first-child{
 
     background:#2563EB;
     color:white;
 
 }
-.hero-buttons button:last-child{
+.hero-buttons a:last-child{
 
     background:transparent;
     color:white;
     border:2px solid white;
 
 }
-.hero-buttons button:hover{
+.hero-buttons a:hover{
 
     transform:translateY(-3px);
     transition:.3s;
@@ -549,60 +550,109 @@ nav h1 {
    IMAGE MODAL
 ========================== */
 
-.image-modal{
 
-    display:none;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,.9);
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
+.image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .92);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
 }
 
-.image-modal img{
-
-    max-width:90%;
-    max-height:90%;
-    border-radius:12px;
-    animation:zoom .3s ease;
+.image-modal img {
+    max-width: 85%;
+    max-height: 85%;
+    border-radius: 12px;
+    animation: zoom .3s ease;
+    object-fit: contain;
 }
 
-.close-modal{
-
-    position:absolute;
-    top:30px;
-    right:45px;
-    color:white;
-    font-size:45px;
-    cursor:pointer;
+.close-modal {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    color: white;
+    font-size: 45px;
+    cursor: pointer;
+    z-index: 10001;
+    line-height: 1;
 }
 
-.project-images img{
-
-    cursor:pointer;
-
+.close-modal:hover {
+    color: #A78BFA;
 }
 
-@keyframes zoom{
+/* Previous / Next buttons */
 
-    from{
+.modal-prev,
+.modal-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .15);
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 10001;
+    transition: .3s;
+}
 
-        transform:scale(.7);
-        opacity:0;
+.modal-prev:hover,
+.modal-next:hover {
+    background: rgba(124, 58, 237, .8);
+}
 
+.modal-prev {
+    left: 30px;
+}
+
+.modal-next {
+    right: 30px;
+}
+
+/* Image counter */
+
+.image-counter {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 16px;
+    background: rgba(0, 0, 0, .55);
+    padding: 7px 14px;
+    border-radius: 20px;
+}
+
+/* Project images remain clickable */
+
+.project-images img,
+.certificate-card img {
+    cursor: pointer;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(.7);
+        opacity: 0;
     }
 
-    to{
-
-        transform:scale(1);
-        opacity:1;
+    to {
+        transform: scale(1);
+        opacity: 1;
     }
-
 }
+
+
 /* ==========================
    Certifications
 ========================== */
@@ -877,7 +927,7 @@ nav h1 {
         gap: 12px;
     }
 
-    .hero-buttons button {
+    .hero-buttons a{
         padding: 13px 22px;
         font-size: 14px;
     }
@@ -1142,16 +1192,36 @@ nav h1 {
 
     /* ---------- IMAGE MODAL ---------- */
 
-    .image-modal img {
-        max-width: 92%;
-        max-height: 80%;
-    }
+            .image-modal img {
+            max-width: 85%;
+            max-height: 75%;
+        }
 
-    .close-modal {
-        top: 15px;
-        right: 20px;
-        font-size: 35px;
-    }
+        .close-modal {
+            top: 15px;
+            right: 20px;
+            font-size: 35px;
+        }
+
+        .modal-prev,
+        .modal-next {
+            width: 45px;
+            height: 45px;
+            font-size: 24px;
+        }
+
+        .modal-prev {
+            left: 10px;
+        }
+
+        .modal-next {
+            right: 10px;
+        }
+
+        .image-counter {
+            bottom: 15px;
+            font-size: 14px;
+        }
 
 }
 
