@@ -491,11 +491,17 @@ nav h1 {
 .project-images img{
 
     width:100%;
-    max-width:420px;
+    max-width:450px;
     border-radius:18px;
     box-shadow:0 15px 35px rgba(0,0,0,.12);
     transition:.3s;
 }
+
+#weather-shine img,
+#budget-pal img{
+    max-width:250px;
+}
+
 
 .project-images img:hover{
 
@@ -682,8 +688,8 @@ nav h1 {
 
 .certificate-card {
     background: #fff;
-    width: 300px;
-    min-width: 300px;
+    width: 250px;
+    min-width: 200px;
     flex-shrink: 0;
     border-radius: 18px;
     padding: 25px;
