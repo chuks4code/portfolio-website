@@ -422,6 +422,8 @@ nav h1 {
 .featured-project:last-child{
 
     border-bottom:none;
+    margin-bottom: 0;
+    padding-bottom: 0;
 
 }
 
@@ -553,6 +555,16 @@ nav h1 {
     transform:translateY(-2px);
 
 }
+
+#more_project_section{
+display: flex;
+justify-content: center;
+background-color: #ffffff;
+padding: 10px 0;
+margin: 0;
+
+}
+
 /* ==========================
    IMAGE MODAL
 ========================== */
@@ -1070,6 +1082,8 @@ nav h1 {
         padding-bottom: 45px;
     }
 
+    
+
     .project-info {
         width: 100%;
         margin-bottom: 25px;
@@ -1130,6 +1144,8 @@ nav h1 {
         padding: 12px 16px;
         font-size: 14px;
     }
+
+
 
 
     /* ---------- CERTIFICATIONS ---------- */
