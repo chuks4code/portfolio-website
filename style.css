@@ -482,33 +482,66 @@ nav h1 {
    Project Images
 ========================== */
 
-.project-images{
-
-    display:flex;
-    justify-content:center;
-    gap:25px;
-    margin:45px 0;
+/* Container for ALL project images */
+.project-images {
+    display: flex; /* Places project images in a row */
+    justify-content: center; /* Keeps normal project images centered */
+    gap: 24px; /* Space between each image */
+    margin: 45px 0; /* Space above and below the images */
 }
 
-.project-images img{
 
-    width:100%;
-    max-width:450px;
-    border-radius:18px;
-    box-shadow:0 15px 35px rgba(0,0,0,.12);
-    transition:.3s;
+/* Individual project images */
+.project-images img {
+    width: 100%; /* Allows the image to use the available width */
+    max-width: 400px; /* Keeps normal project images from becoming too large */
+    border-radius: 18px; /* Rounded corners */
+    box-shadow: 0 15px 35px rgba(0,0,0,.12); /* Adds a soft shadow */
+    transition: .3s; /* Makes hover animation smooth */
+    cursor: pointer; /* Shows that the image can be clicked */
 }
 
+
+/* Smaller screenshots for Weather Shine and Budget Pal */
 #weather-shine img,
-#budget-pal img{
-    max-width:250px;
+#budget-pal img {
+
+    max-width: 250px; /* Keeps these screenshots smaller */
 }
 
 
-.project-images img:hover{
+/* ==========================
+   EventHub Image Scroller
+========================== */
 
-    transform:translateY(-8px);
+/* ONLY the EventHub image container */
+#eventhub-images {
 
+    justify-content: flex-start; /* EventHub images start from the left */
+    overflow-x: auto; /* Allows horizontal scrolling */
+    overflow-y: hidden; /* Prevents vertical scrolling inside the container */
+    flex-wrap: nowrap; /* Keeps all EventHub images on one row */
+    padding: 10px 5px 20px; /* Adds some space around the images */
+    scroll-snap-type: x mandatory; /* Makes scrolling snap to each image */
+    scroll-behavior: smooth; /* Makes scrolling smooth */
+    -webkit-overflow-scrolling: touch; /* Improves scrolling on mobile */
+}
+
+
+/* ONLY EventHub images */
+#eventhub-images img {
+
+    flex: 0 0 75%; /* Each screenshot takes about 75% of the container */
+    width: 100%; /* Image fills its assigned space */
+    max-width: 400px; /* Prevents screenshots from becoming too large */
+    scroll-snap-align: start; /* Each screenshot snaps into position */
+}
+
+
+/* Hover effect for ALL project images */
+.project-images img:hover {
+
+    transform: translateY(-8px); /* Moves image slightly upward on hover */
 }
 
 /* ==========================
